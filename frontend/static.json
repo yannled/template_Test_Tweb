@@ -1,0 +1,14 @@
+{
+    "root": "build/",
+    "proxies": {
+        "/auth/": {
+            "origin": "https://yann-test-tweb-server.herokuapp.com/auth"
+        },
+        "/api/": {
+            "origin": "https://yann-test-tweb-server.herokuapp.com/api"
+        },
+        "graphql":{
+            "origin": "https://yann-test-tweb-server.herokuapp.com/graphql"
+        }
+    }
+}

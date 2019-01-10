@@ -1,0 +1,55 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@google-cloud/storage": "^2.3.4",
+    "@material-ui/core": "^3.5.1",
+    "@material-ui/icons": "^3.0.1",
+    "apollo-boost": "^0.1.22",
+    "apollo-link-context": "^1.0.12",
+    "axios": "^0.18.0",
+    "graphql": "^14.0.2",
+    "prop-types": "^15.6.2",
+    "react": "^16.6.3",
+    "react-apollo": "^2.3.1",
+    "react-blur": "^0.6.0",
+    "react-blur-image": "^1.0.1",
+    "react-dom": "^16.6.3",
+    "react-gateway": "^3.0.0",
+    "react-grid-gallery": "^0.5.3",
+    "react-image": "^1.5.1",
+    "react-modal": "^3.8.1",
+    "react-modal2": "^5.0.0",
+    "react-pixelify": "^0.1.1",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9001 -c ./storybook"
+  },
+  "proxy": "http://localhost:2000",
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ],
+  "devDependencies": {
+    "@storybook/addon-info": "^4.0.9",
+    "@storybook/react": "^4.0.9",
+    "dotenv": "^6.2.0",
+    "eslint": "^5.12.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-jsx-a11y": "^6.1.2",
+    "eslint-plugin-react": "^7.12.3"
+  }
+}
