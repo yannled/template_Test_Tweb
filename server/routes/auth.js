@@ -11,6 +11,19 @@ const JWTStrategy = passportJWT.Strategy;
 const ExtractJwt = passportJWT.ExtractJwt;
 const User = require('../Model/user');
 
+async function verifyUserByEmailPassword(email, password) {
+  const authUser = { _id: 0, auth: false };
+
+  const user = await User.findOne().where('email').equals(email);
+
+  if (user !== 'Undefined' && user.password === password) {
+    authUser.auth = true;
+    authUser._id = user._id;
+  }
+
+  return authUser;
+}
+
 passport.use(new LocalStrategy(
   {
     usernameField: 'email',
@@ -48,17 +61,6 @@ router.post('/login', passport.authenticate('local', { session: false }), (req, 
   res.send({ user_id: user._id, token });
 });
 
-async function verifyUserByEmailPassword(email, password) {
-  const authUser = { _id: 0, auth: false };
 
-  const user = await User.findOne().where('email').equals(email);
-
-  if (user !== 'Undefined' && user.password === password) {
-    authUser.auth = true;
-    authUser._id = user._id;
-  }
-
-  return authUser;
-}
 
 module.exports = router;

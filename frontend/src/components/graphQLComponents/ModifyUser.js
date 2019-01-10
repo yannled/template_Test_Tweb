@@ -1,6 +1,6 @@
 import React from 'react';
-import gql from "graphql-tag";
-import { Mutation } from "react-apollo";
+import gql from 'graphql-tag';
+import { Mutation } from 'react-apollo';
 
 const UPDATE_USER = gql`
     mutation UpdateUser($_id: ID!, $input: UserInput){
@@ -13,18 +13,13 @@ const UPDATE_USER = gql`
 
 const token = window.localStorage.getItem('token');
 
-const UpdateUser = ({children}) => {
-
-  return (
-    <Mutation mutation={UPDATE_USER}>
-      {(mutate) => {
-        const updateUser = (_id, user) => {
-            return mutate({ variables: {_id: _id, input: user }, context: {Authorization: `bearer ${token}`} });
-        };
-        return children(updateUser)
-      }}
-    </Mutation>
-  );
-};
+const UpdateUser = ({ children }) => (
+  <Mutation mutation={UPDATE_USER}>
+    {(mutate) => {
+      const updateUser = (_id, user) => mutate({ variables: { _id, input: user }, context: { Authorization: `bearer ${token}` } });
+      return children(updateUser);
+    }}
+  </Mutation>
+);
 
 export default UpdateUser;

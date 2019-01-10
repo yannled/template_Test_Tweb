@@ -3,11 +3,8 @@ import AppBar from '@material-ui/core/AppBar'
 import ToolBar from '@material-ui/core/Toolbar'
 import { withStyles } from "@material-ui/core/styles";
 import Typography from '@material-ui/core/Typography'
-import ProfileNavBar from './ProfileNav'
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import SearchIcon from "@material-ui/icons/Search";
-import InputBase from '@material-ui/core/InputBase';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import PropTypes from 'prop-types';
 import { AuthContext } from './AuthProvider';
@@ -137,25 +134,8 @@ class NavBar extends Component {
                         <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
                             <MenuIcon />
                         </IconButton>
-                        <Typography className={classes.title} variant="h4" color="inherit">Filter</Typography>
+                        <Typography className={classes.title} variant="h4" color="inherit">Test-TWEB</Typography>
 
-                        <div className={classes.search}>
-                            <div className={classes.searchIcon}>
-                                <IconButton className={classes.menuButton} color="inherit" aria-label="Menu">
-                                    <SearchIcon />
-                                </IconButton>
-                            </div>
-                            <InputBase
-                                onChange={this.updateSearch}
-                                placeholder="Search for an awesome post..."
-                                classes={{
-                                    root: classes.inputRoot,
-                                    input: classes.inputInput,
-                                }}
-                            />
-                        </div>
-
-                        <ProfileNavBar className={classes.profileBar} />
                         <AuthContext>
                             {({ signOut }) => (
                                 <button onClick={signOut}>LOGOUT</button>

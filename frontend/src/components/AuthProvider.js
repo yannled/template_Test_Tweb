@@ -31,7 +31,7 @@ class AuthProvider extends Component {
                 this.setState({ user_id });
                 console.log({user_id, token});
                 this.setState({ initialized: true });
-                console.log({initialized});AuthContext
+                console.log({initialized});
             })
             .catch(err => {
                 console.error(err);

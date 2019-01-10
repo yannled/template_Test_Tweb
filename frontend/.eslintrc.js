@@ -3,6 +3,10 @@ module.exports = {
     "rules": {
         "react/prefer-stateless-function" : "off",
         "import/no-named-as-default" : "off",
-        "import/no-named-as-default-member" : "off"
+        "import/no-named-as-default-member" : "off",
+        "react/prop-types" : "off",
+        "camelcase" : "off",
+        "react/destructuring-assignment": "off",
+        "import/named": "off",
     }
 };

@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
@@ -10,7 +9,6 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { setContext } from 'apollo-link-context';
 import * as serviceWorker from './serviceWorker';
 import App from './App';
-/* eslint-enable no-unused-vars */
 
 const httpLink = createHttpLink({
   uri: 'http://localhost:2000/graphql',
@@ -34,12 +32,13 @@ const client = new ApolloClient({
 });
 
 ReactDOM.render(
-    <BrowserRouter>
-        <ApolloProvider client={client}>
-            <App />
-        </ApolloProvider>
-    </BrowserRouter>,
-    document.getElementById('root'),
+  <BrowserRouter>
+    <ApolloProvider client={client}>
+      <App />
+    </ApolloProvider>
+  </BrowserRouter>,
+  // eslint-disable-next-line no-undef
+  document.getElementById('root'),
 );
 
 // If you want your app to work offline and load faster, you can change
