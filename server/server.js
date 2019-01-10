@@ -6,6 +6,7 @@ const cors = require('cors');
 const passport = require('passport');
 const schema = require('./schema');
 const auth = require('./routes/auth');
+const api = require('./routes/api');
 
 const { port } = require('./config');
 
@@ -24,6 +25,8 @@ const withUser = (req, res, next) => passport.authenticate('jwt', { session: fal
   req.user = user;
   next();
 })(req, res, next);
+
+app.use('/api', api);
 
 app.use('/auth', auth);
 
