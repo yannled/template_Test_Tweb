@@ -10,7 +10,7 @@
 
   Ajout de la liste des films dans une base de données local, (impossible en remote sur atlas)
 
-![1547124751599](/home/zutt/Documents/sync/Heig/TWEB/tweb_social_network/img_readme/1547124751599.png)
+![1547124751599](./img_readme/1547124751599.png)
 
 
 
@@ -79,10 +79,11 @@
 
 
 
-Pour récupérer les films on va sur le endpoint graphql get User : 
+Pour récupérer les films on va sur le endpoint graphql getUser : 
 
 ```json
-getUsers {
+{
+   getUser(_id: "5c374a081f18d748ae1e6153") {
     moviesWatches {
       vote_count
       video
@@ -99,5 +100,35 @@ getUsers {
       tmdb_id
     }
   }
+}
 ```
 
+Pour modifier : 
+
+```json
+mutation{
+  updateUser(_id: "5c374a081f18d748ae1e6153" input:{
+    moviesWatches : ["5c373fdaf0fbcb6d4d0516eb", "5c373fdaf0fbcb6d4d0516e7"]
+  })
+  {
+    _id
+    moviesWatches {
+      vote_count
+      video
+      vote_average
+      title
+      popularity
+      poster_path
+      original_language
+      original_title
+      backdrop_path
+      adult
+      overview
+      release_date
+      tmdb_id
+    }
+  }
+}
+```
+
+- _id correspond à l'id du user et les autres id correspondents à ceux des movies.
