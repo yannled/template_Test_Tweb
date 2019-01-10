@@ -74,6 +74,7 @@
 
 3. **Authentification**
 
+(le enpoint /api/me me permet de récupérer le user via restAPI, utilisé après le login,lorsque je voulais essayé d'implémenter le frontend)
 - Via le frontend vous avez un formulaire pour enregister un compte
 - Via le frontend vous avez un formulaire pour vous connecter
 - Via le header Autorization et un bearer token.
