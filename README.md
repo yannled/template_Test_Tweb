@@ -4,25 +4,48 @@
 
 
 
-1. **RECUPERER LES FILMS**
+1. **Importer une collection de films**
 
-
-
-  Ajout de la liste des films dans une base de données local, (impossible en remote sur atlas)
+  Ajout de la liste des films dans une base de données local, (impossible en remote sur atlas via mongoimport)
 
 ![1547124751599](./img_readme/1547124751599.png)
 
 
 
-2. **API**
+2. **Liste des films**
 
-   Utilisation de graphql pour la récupération des movies.
+   - Utilisation de mongoose
+   - Model : 
 
-   aller sur : 
+   ```
+   const movieSchema = new Schema({
+     vote_count: Number,
+     video: Boolean,
+     vote_average: Number,
+     title: String,
+     popularity: Number,
+     poster_path: String,
+     original_language: String,
+     original_title: String,
+     backdrop_path: String,
+     adult: Boolean,
+     overview: String,
+     release_date: { type: Date },
+     tmdb_id: Number,
+     genres: [{ type: String }],
+   });
+   ```
 
-   - http://<monURl>/graphql
+   - Endpoint graphql :
 
-   - (http://localhost:2000/graphql)
+     * NECESSITE LE TOKEN BEARER DANS LE HEADER*
+
+     Utilisation de graphql pour la récupération des movies.
+
+     aller sur : 
+
+     - http://<monURl>/graphql (http://localhost:2000/graphql)
+
 
    ```json
    {
@@ -47,12 +70,25 @@
    - Begin = entrée par laquelle on commence à récupérer les données.
    - Number = nombre de films que l'on récupère.
 
-3. **AUTHENTICATION**
+   - Pagination via la requête mongoose et l'ajout de number dans la requête graphql.
+
+3. **Authentification**
 
 - Via le frontend vous avez un formulaire pour enregister un compte
 - Via le frontend vous avez un formulaire pour vous connecter
+- Via le header Autorization et un bearer token.
+- Model User :
 
-
+```
+const userSchema = new Schema({
+  name: { type: String, required: true },
+  lastName: String,
+  email: { type: String, unique: true, required: true },
+  password: { type: String, required: true },
+  inscriptionDate: { type: Date, default: Date.now },
+  moviesWatches: [{ type: Schema.ObjectId, ref: 'movies' }],
+});
+```
 
 - Création du user via une requête graphQL
 
@@ -70,14 +106,11 @@
   }
   ```
 
-
-- Connection via une reqête sur l'API rest /auth/login
+- Connection via une reqête sur l'API rest /auth/login en fournissant email et password.
 
 
 
 4. **List de movie vues**
-
-
 
 Pour récupérer les films on va sur le endpoint graphql getUser : 
 
@@ -132,3 +165,12 @@ mutation{
 ```
 
 - _id correspond à l'id du user et les autres id correspondents à ceux des movies.
+
+
+
+#### Frontend 
+
+- formulaire de register
+
+- formulaire de login
+- je n'ai pas eu le temps de faire le formulaire pour la modification de sa liste de film ou l'affichage.
